@@ -284,7 +284,7 @@ void mdns_setup(){
   //   the fully-qualified domain name is "esp8266.local"
   // - second argument is the IP address to advertise
   //   we send our IP address on the WiFi network
-  if (!MDNS.begin("mysterymachine")) {
+  if (!MDNS.begin("esp8266")) {
     Serial.println("Error setting up MDNS responder!");
     while(1) { 
       delay(1000);
