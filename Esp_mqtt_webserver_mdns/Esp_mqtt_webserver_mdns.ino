@@ -132,8 +132,8 @@ void startWebServer() {
       ESP.reset();
     });
     webServer.onNotFound([]() {
-      String s = "<h1>MysteryMachine in: AP mode</h1><p><a href=\"/settings\">Wi-Fi Settings</a></p>";
-      webServer.send(200, "text/html", makePage("MysteryMachine GUI", s));
+      String s = "<h1>esp8266 in: AP mode</h1><p><a href=\"/settings\">Wi-Fi Settings</a></p>";
+      webServer.send(200, "text/html", makePage("esp8266 GUI", s));
     });
   }
   else {
@@ -141,8 +141,8 @@ void startWebServer() {
     Serial.println(WiFi.localIP());
     settingMode =false;
     webServer.on("/", []() {
-      String s = "<h1>MysteryMachine in: STA mode</h1><p><a href=\"/reset\">Reset Wi-Fi Settings</a></p>";
-      webServer.send(200, "text/html", makePage("MysteryMachine GUI", s));
+      String s = "<h1>esp8266 in: STA mode</h1><p><a href=\"/reset\">Reset Wi-Fi Settings</a></p>";
+      webServer.send(200, "text/html", makePage("esp8266 GUI", s));
     });
     webServer.on("/reset", []() {
       settingMode =true;
@@ -150,7 +150,7 @@ void startWebServer() {
         EEPROM.write(i, 0);
       }
       EEPROM.commit();
-      String s = "<h1>Wi-Fi settings was reset.</h1><p>Please reset device.</p>";
+      String s = "<h1>Wi-Fi settings have been reconfigured.</h1><p>Rebooting device.</p>";
       webServer.send(200, "text/html", makePage("Reset Wi-Fi Settings", s));
       Serial.print("Rebooting.....in 5 sec");
       delay(5000);
